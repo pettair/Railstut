@@ -12,5 +12,6 @@ group :development, :test do
   gem 'webrat', '0.7.1'
   gem 'autotest', '4.3.2'
   gem 'autotest-rails-pure', '4.1.0'
+  gem 'annotate-models', '1.0.4'
 end
 
