@@ -18,9 +18,67 @@
       <strong>Microposts</strong> <%= @user.microposts.count %>
       <%= render 'shared/stats' %>
       <% unless @users.empty? %>
-        <% @users.each do |user| %>
-          <%= link_to gravatar_for(user, :size => 30), user %>
-        <% end %>
+		<% @users.each do |user| %>
+		<SCRIPT type="text/javascript" src="./CoverFlows_files/coverflow.js"></SCRIPT>
+		<SCRIPT type="text/javascript">
+			var canvas_compatible = false;
+			try {
+				canvas_compatible = !!(document.createElement('canvas').getContext('2d'));
+			} catch(e) {}
+			if (canvas_compatible) document.getElementById("__cvfl-coverflow-holder").style.display="";
+			else document.getElementById("oldlist").style.display="";	
+		</SCRIPT>
+		<SCRIPT type="text/javascript">
+			if (canvas_compatible) {
+
+				window.onload = function(){	Coverflow.init([
+
+					{src: 'CoverFlows_files/covers/cover1med.jpg',
+				  		label: {album: 'Abbey Road', artist: 'The Beatles', url:'http://www.beatles.com/', high:'CoverFlows_files/covers/cover1large.jpg'}},
+						{src: 'CoverFlows_files/covers/cover2med.jpg',
+						   label: {album: 'Graduation', artist: 'Kanye West', url:'http://www.kanyewest.com', high:'CoverFlows_files/covers/cover2large.jpg'}},
+
+						{src: 'CoverFlows_files/covers/cover3med.jpg',
+						   label: {album: 'Circus', artist: 'Britney Spears', url:'http://www.britneyspears.com', high:'CoverFlows_files/covers/cover3large.jpg'}},
+						],
+					{createLabel: function(item){
+							return item.label.album +'<br><span id="artist">'+ item.label.artist + 	'</span><br><a href="' + item.label.url + '">'+item.label.url+'</a>';
+
+							  },
+					onSelectCenter: function(item,id){
+
+								var img = new Image();
+								img.onload = function(){ 
+
+
+								Lightbox.show(this.src,id);	
+
+								}; 
+
+								img.src = item.label.high;
+
+								},
+
+								refill: function(start){
+
+									new HTTPQuery("/ajax/cflow/0/?from="+start+"&l=1&cache=3998668924011356071",0,"updateCflow");
+								}		
+								});
+								}
+							}
+
+							function updateCflow(oHttp) {
+								cResponse = oHttp.responseText;
+								if (cResponse.substr(0,1)=="!"){
+									cResponse=cResponse.substr(1);
+									eval(cResponse);
+								}
+							}
+   		
+			
+		</SCRIPT>
+		<%= link_to gravatar_for(user, :size => 20), user %>
+		<% end %>
       <% end %>
     </td>
   </tr>

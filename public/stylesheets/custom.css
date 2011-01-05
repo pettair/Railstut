@@ -3,8 +3,11 @@
 }
 
 body {
-  background: #cff;
+  /*position: relative;*/
+  background: #aaa;
 }
+
+/*canvas, img{position: absolute;}*/
 
 header {
   padding-top: 20px;
@@ -29,12 +32,12 @@ section h1 {
 /* Links */
 
 a {
-  color: #09c;
+  color: #66CCFF;
   text-decoration: none;
 }
 
 a:hover {
-  color: #069;
+  color: #66CCFF;
   text-decoration: underline;
 }
 
@@ -86,8 +89,8 @@ a.signup_button {
   display: block;
   text-align: center;
   width: 190px;
-  color: #fff;
-  background: #006400;
+  color: #66CCFF;
+  background: #888;
   font-size: 150%;
   font-weight: bold;
   padding: 20px;
@@ -100,6 +103,7 @@ a.signup_button {
   -webkit-border-radius: 10px;
   border-radius:         10px;
 }
+
 footer {
   text-align: center;
   margin-top: 10px;
@@ -128,7 +132,10 @@ td.main {
 td.sidebar {
   width: 30%;
   padding: 1em;
-  vertical-align: middle;
+  text-align: center;
+  /*height:100px; /*the height of the element*/
+  /*position:absolute;*/
+  vertical-align: top;
   background: #eee;
 }
 
@@ -191,9 +198,6 @@ ul.users {
   list-style: none;
 }
 
-.
-.
-.
 h1.micropost {
   margin-bottom: 0.3em;
 }
@@ -247,5 +251,57 @@ form.new_micropost {
 form.new_micropost textarea {
   height: 4em;
   margin-bottom: 0;
+}
+
+#__cvfl-coverflow{ 
+	height: 375px;
+	margin: auto;
+	margin-left:88px;
+	overflow: hidden; 
+    position: relative;
+	width: 600px;
+}
+
+#__cvfl-coverflow-label{ 
+	color: #fff;
+	font: 15pt Helvetica;
+	line-height: 1.3em;
+	position: relative;
+	top: 223px;
+	z-index: 700;
+	margin-left:85px;
+	margin-top:15px;
+}
+
+#__cvfl-coverflow-label a{ 
+	font-size:12px;
+	color:#0099FF;
+}
+
+#__cvfl-coverflow-holder{ 
+	width: 650px;
+	background:#272727;
+	padding:15px 0;
+}
+
+#artist { 
+	font-size:14px;
+}
+
+#smallerPreview {
+	margin-top: 240px;
+	float:left;
+}
+
+#smallerPreview img { 
+	width: 80px;
+	height:80px;
+}
+
+#__lb-im {  
+	z-index:1000;
+	left:-325px;
+	width:350px;
+	height:350px;
 }
 

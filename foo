@@ -1,0 +1,81 @@
+<table summary="Information about following/followers">
+  <tr>
+    <td class="main">
+      <h1><%= @title %></h1>
+      
+      <% unless @users.empty? %>
+        <ul class="users">
+          <%= render @users %>
+        </ul>
+		<% if false %>
+        <%= will_paginate @users %>
+		<% end %>
+      <% end %>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @user.name %><br />
+      <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
+      <strong>Microposts</strong> <%= @user.microposts.count %>
+      <%= render 'shared/stats' %>
+      <% unless @users.empty? %>
+	<SCRIPT type="text/javascript" src="./CoverFlows_files/coverflow.js"></SCRIPT>
+	<SCRIPT type="text/javascript">
+		var canvas_compatible = false;
+		try {
+			canvas_compatible = !!(document.createElement('canvas').getContext('2d'));
+		} catch(e) {}
+		if (canvas_compatible) document.getElementById("__cvfl-coverflow-holder").style.display="";
+		else document.getElementById("oldlist").style.display="";	
+	</SCRIPT>
+
+
+	<SCRIPT type="text/javascript">
+		if (canvas_compatible) {
+
+	window.onload = function(){	Coverflow.init([
+        <% @users.each do |user| %>
+          /*<%= link_to gravatar_for(user, :size => 20), user %>*/
+		{src: link_to gravatar_for(user, :size => 20),
+		   label: {album: 'Loose', artist: 'Nelly Furtado', url:'http://www.nellyfurtado.com', high:link_to gravatar_for(user, :size => 20)}}
+        <% end %>
+		   
+],
+{	createLabel: function(item)
+       {
+			
+			return item.label.album +'<br><span id="artist">'+ item.label.artist + '</span><br><a href="' + item.label.url + '">'+item.label.url+'</a>';
+	         
+	  },
+		onSelectCenter: function(item,id){
+		
+		var img = new Image();
+		img.onload = function(){ 
+		
+		
+		Lightbox.show(this.src,id);	
+		
+		}; 
+		
+		img.src = item.label.high;
+		
+		},
+		
+		refill: function(start){
+
+			new HTTPQuery("/ajax/cflow/0/?from="+start+"&l=1&cache=3998668924011356071",0,"updateCflow");
+		}		
+		});
+		}
+	}
+	
+	function updateCflow(oHttp) {
+		cResponse = oHttp.responseText;
+		if (cResponse.substr(0,1)=="!"){
+			cResponse=cResponse.substr(1);
+			eval(cResponse);
+		}
+	}
+      <% end %>
+    </td>
+  </tr>
+</table>
