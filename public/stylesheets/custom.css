@@ -150,14 +150,25 @@ div.field, div.actions {
 }
 
 .field_with_errors {
-  margin-top: 10px;
-  padding: 2px;
-  background-color: red;
+  margin-top: -10px;
+  padding: -2px;
+  /*background-color: gray;*/
   display: table;
 }
 
 .field_with_errors label {
-  color: #fff;
+  color: red;
+}
+
+.flash {
+  text-align: center;
+  padding: .3em .4em;
+  clear: both;
+  background: #99ccff;
+  border-color: #99ccff;
+  border-radius: 10px;
+  /*max-width: 46.923em; /* 610/13 */
+  /**max-width: 45.750em; /* 610/13.3333 - for IE */
 }
 
 #error_explanation {
@@ -167,6 +178,9 @@ div.field, div.actions {
   padding-bottom: 12px;
   margin-bottom: 20px;
   background-color: #f0f0f0;
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
 }
 
 #error_explanation h2 {

@@ -4,7 +4,7 @@ describe PagesController do
   render_views
 
   before(:each) do
-    @base_title = "Ruby on Rails Tutorial Sample App"
+    @base_title = "Tmitter App"
   end
 
   describe "GET 'home'" do
@@ -50,7 +50,7 @@ describe PagesController do
       get 'contact'
       response.should have_selector("title",
                         :content =>
-                          "Ruby on Rails Tutorial Sample App | Contact")
+                          "Tmitter App | Contact")
     end
   end
 
@@ -64,7 +64,7 @@ describe PagesController do
       get 'about'
       response.should have_selector("title",
                         :content =>
-                          "Ruby on Rails Tutorial Sample App | About")
+                          "Tmitter App | About")
     end
   end
 end
